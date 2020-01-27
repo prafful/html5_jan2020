@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Local Storage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body onload="initilizeScore()">
+    <h1>Web Storage</h1>
+    <button onclick="addScore()">Increment</button>
+    
+
+        <br>
+        <div id='number'>
+            Add some more scores!
+        </div>
+        <br>
+        <button onclick="clearScore()">Clear</button>
+        <script>
+
+            var score = 0
+
+            var scoreContainer = document.getElementById('number')
+            var addScore = function(){
+                score++
+                localStorage.setItem('score',  score)
+                scoreContainer.innerHTML = score
+            }
+
+            var initilizeScore = function(){
+                if (localStorage.score === undefined){
+                    localStorage.setItem('score', 0)
+                }else{
+                    score = localStorage.getItem('score')
+                    scoreContainer.innerHTML = localStorage.getItem('score')
+                }
+            }
+            var clearScore = function(){
+                //localStorage.removeItem('score')
+                localStorage.clear()
+            }
+
+        </script>
+    </body>
+</html>
