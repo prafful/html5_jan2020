@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Drag And Drop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/dragdrop.css">
+    </head>
+    <body>
+    <h1>Drag And Drop</h1>
+
+    <div id="dragstart" ondragover="dragOverInSource(event)">
+        <img src="image/logo.jpg" 
+            width="50" 
+            id="dragimage"
+            draggable="true"
+            ondragstart="logoDragStarted(event)"
+          >
+
+    </div>
+
+    <div id="dragstop"  
+        ondrop="logoDroppedInTarget(event)"
+        ondragover="dragoverInTarget(event)"    
+        >
+    Will be dropped here!
+    </div>
+
+    <script>
+        var dragOverInSource = function(e){
+            e.preventDefault()
+            //console.log(e);
+        }
+
+        var logoDragStarted = function(e){
+            console.log("Logo Being Dragged!");
+            console.log(e.target)
+            console.log(e.target.id);
+            e.dataTransfer.setData("sourcedivid", e.target.id)
+        }
+
+        var logoDroppedInTarget = function(e){
+            e.preventDefault()
+            console.log("Logo Being Dropped!");
+            var id = e.dataTransfer.getData("sourcedivid")
+            console.log(id);
+            var imgRef = document.getElementById(id)
+            console.log(imgRef);
+            console.log( e.target);
+            e.target.innerHTML = ""
+            e.target.appendChild(imgRef)
+
+        }
+
+        var dragoverInTarget = function(e){
+            e.preventDefault()
+        }
+
+        
+    </script>
+
+    </body>
+</html>
