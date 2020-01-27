@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Canvas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+    <h1>Canvas</h1>
+
+    <canvas id="mycanvas" 
+            width="500" 
+            height="500" 
+            style="border: 1px solid red;">
+    </canvas>
+
+
+    <script>
+        var canvasRef = document.getElementById('mycanvas')
+
+        //initialize the canvas/graphics context
+        var ctx = canvasRef.getContext('2d')
+        //start drawing
+        ctx.moveTo(0, 0)
+        ctx.lineTo(500, 500)
+        ctx.stroke()
+
+        //draw circle
+        ctx.beginPath()
+        ctx.arc(150, 150, 50, 0, Math.PI, true)
+        ctx.stroke()
+        
+        ctx.beginPath()
+        ctx.arc(350, 150, 50, 0, Math.PI, false)
+        ctx.stroke()
+        
+        ctx.beginPath()
+        ctx.arc(250, 250, 50, 0, Math.PI *2, false)
+        ctx.stroke()
+        
+
+    </script>
+
+
+
+    </body>
+</html>
